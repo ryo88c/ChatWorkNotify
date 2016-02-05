@@ -1,0 +1,41 @@
+{
+    "name": "ryo88c/chat-work-notify",
+    "type": "project",
+    "description": "",
+    "license": "proprietary",
+    "require": {
+        "php": ">=5.5.0",
+        "bear/package": "~1.0",
+        "josegonzalez/dotenv": "~2.0",
+        "ryo88c/chat-work-api-client": "dev-master",
+        "ryo88c/globe-api-client": "dev-master"
+    },
+    "require-dev": {
+        "composer/composer": ">=1.0.0-alpha10",
+        "phpunit/phpunit": "~4.8",
+        "squizlabs/php_codesniffer": "~2.3",
+        "phpmd/phpmd": "~2.3"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Ryo88c\\ChatWorkNotify\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "chmod -R 777 var/log",
+            "chmod -R 777 var/tmp"
+        ],
+        "post-update-cmd": [
+            "chmod -R 777 var/log",
+            "chmod -R 777 var/tmp"
+        ],
+        "test": [
+            "php vendor/phpmd/phpmd/src/bin/phpmd src text ./phpmd.xml",
+            "php vendor/squizlabs/php_codesniffer/scripts/phpcs",
+            "php vendor/phpunit/phpunit/phpunit"
+        ]
+    }
+}
